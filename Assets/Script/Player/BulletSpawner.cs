@@ -20,6 +20,9 @@ public class BulletSpawner : MonoBehaviour
 
 
     private GameObject spawnedBullet;
+    private GameObject spawnLeftSideBullet;
+    private GameObject spawnRightSideBullet;
+
     private float timer = 0f;
     // Start is called before the first frame update
     void Start()
@@ -43,12 +46,20 @@ public class BulletSpawner : MonoBehaviour
 
     private void Fire()
     {
-        if (bullet)
+        if (bullet != null)
         {
             spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
             spawnedBullet.GetComponent<PlayerShoot>()._bulletSpeed = speed;
             spawnedBullet.GetComponent<PlayerShoot>()._bulletLife = bulletLife;
             spawnedBullet.transform.rotation = transform.rotation;
+
+            spawnLeftSideBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0,0,-25));
+            spawnLeftSideBullet.GetComponent<PlayerShoot>()._bulletSpeed = speed;
+            spawnLeftSideBullet.GetComponent<PlayerShoot>()._bulletLife = bulletLife;
+
+            spawnRightSideBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 25));
+            spawnRightSideBullet.GetComponent<PlayerShoot>()._bulletSpeed = speed;
+            spawnRightSideBullet.GetComponent<PlayerShoot>()._bulletLife = bulletLife;
         }
     }
 }
