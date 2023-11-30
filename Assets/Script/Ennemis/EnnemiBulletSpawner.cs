@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class BulletSpawner : MonoBehaviour
+public class EnnemibBulletSpawner : MonoBehaviour
 {
     enum SpawnerType { Straight, Spin }
 
@@ -49,8 +49,8 @@ public class BulletSpawner : MonoBehaviour
         if (bullet != null)
         {
             spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-            spawnedBullet.GetComponent<PlayerShoot>()._bulletSpeed = speed;
-            spawnedBullet.GetComponent<PlayerShoot>()._bulletLife = bulletLife;
+            spawnedBullet.GetComponent<EnnemiShoot>()._bulletSpeed = speed;
+            spawnedBullet.GetComponent<EnnemiShoot>()._bulletLife = bulletLife;
             spawnedBullet.transform.rotation = transform.rotation;
         }
     }
